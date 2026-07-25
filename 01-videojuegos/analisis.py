@@ -118,3 +118,22 @@ plt.xlabel("Millones de copias")
 plt.tight_layout()
 plt.show()
 
+```notebook-python
+while True:
+  entrada_juego = input("Escriba el juego a buscar: ")
+  for juego, venta in df.iterrows():
+    if venta["Name"] == entrada_juego:
+      if venta["Global_Sales"] > 30:
+        estado = "Exito masivo"
+      elif venta["Global_Sales"] > 15:
+          estado = "Muy vendido"
+      elif venta["Global_Sales"] > 5:
+          estado = "Vendido"
+      elif venta["Global_Sales"] <= 5:
+        estado = "Poco vendido"
+      print(venta["Name"], venta["Global_Sales"] , estado)
+  respuesta = input("Seguimos Si o No? ")
+  if respuesta.lower() == "no":
+    break 
+      #print(venta["Name"], venta["Global_Sales"])
+```
