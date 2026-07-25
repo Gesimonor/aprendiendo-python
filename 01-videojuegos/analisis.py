@@ -57,21 +57,6 @@ data = {
 #Ventas <= 5 millones   → "Poco vendido"
 df = pd.DataFrame(data)
 
-entrada_juego = input("Escriba el juego a buscar: ")
-
-for juego, venta in df.iterrows():
-  if venta["Name"] == entrada_juego:
-    if venta["Global_Sales"] > 30:
-      estado = "Exito masivo"
-    elif venta["Global_Sales"] > 15:
-        estado = "Muy vendido"
-    elif venta["Global_Sales"] > 5:
-        estado = "Vendido"
-    elif venta["Global_Sales"] <= 5:
-      estado = "Poco vendido"
-    print(venta["Name"], venta["Global_Sales"] , estado)
-    #print(venta["Name"], venta["Global_Sales"])
-
 #print("=== PRIMERAS FILAS ===")
 #print(df.head())
 #print("\n=== INFO DEL DATASET ===")
@@ -118,11 +103,12 @@ plt.xlabel("Millones de copias")
 plt.tight_layout()
 plt.show()
 
-```notebook-python
 while True:
   entrada_juego = input("Escriba el juego a buscar: ")
+  encontrado = False
   for juego, venta in df.iterrows():
-    if venta["Name"] == entrada_juego:
+    if venta["Name"] == entrada_juego: #Antes de agregar la fila 61 encontrado no existia por eso no funcionaba
+      encontrado = True
       if venta["Global_Sales"] > 30:
         estado = "Exito masivo"
       elif venta["Global_Sales"] > 15:
@@ -131,9 +117,11 @@ while True:
           estado = "Vendido"
       elif venta["Global_Sales"] <= 5:
         estado = "Poco vendido"
-      print(venta["Name"], venta["Global_Sales"] , estado)
-  respuesta = input("Seguimos Si o No? ")
-  if respuesta.lower() == "no":
-    break 
+      respuesta = print(venta["Name"], venta["Global_Sales"] , estado)
       #print(venta["Name"], venta["Global_Sales"])
-```
+  if encontrado == False:
+    print("No se encontro el juego")
+
+  s = input("Quieres seguir? Si o No")
+  if s == "No":
+      break
