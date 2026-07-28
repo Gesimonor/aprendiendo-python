@@ -50,6 +50,32 @@ data = {
         17.00,15.00,12.00,8.00,14.50,13.00,10.00,5.00,3.50,700.50
     ]
 }
+
+#Agregar al diccionario la info
+
+#Name = Free Fire
+#Platform Android
+#Year 2020
+#Genre Shooter
+#Global_Sales 78.0
+
+
+añadir_name = input("Escriba el nombre del juego: ")
+añadir_platform = input("Escriba la plataforma del juego: ")
+añadir_year = input("Escriba el año del juego: ")
+añadir_genre = input("Escriba el género del juego: ")
+añadir_global_sales = float(input("Escriba las ventas globales del juego: "))
+
+print(type(añadir_global_sales))
+data["Name"].append(añadir_name)
+data["Platform"].append(añadir_platform)
+data["Year"].append(añadir_year)
+data["Genre"].append(añadir_genre)
+data["Global_Sales"].append(añadir_global_sales)
+
+
+
+
 #Quiero que escribas una función que recorra los juegos y los clasifique así:
 #Ventas > 30 millones   → "Éxito masivo"
 #Ventas > 15 millones   → "Muy vendido"
